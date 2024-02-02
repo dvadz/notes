@@ -1,7 +1,12 @@
-const Navbar = () => {
+import NavbarItem from "./NavbarItem";
+
+const Navbar = ({ children }) => {
+  const renderedChildren = children.map((child, count) => {
+    return <NavbarItem key={count}>{child}</NavbarItem>;
+  });
   return (
-    <div className="navbar">
-      <div>Navbar</div>
+    <div className="w-full border flex flex-row justify-between items-center">
+      {renderedChildren}
     </div>
   );
 };
