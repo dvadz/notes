@@ -3,7 +3,7 @@ import Menu from "./menu/Menu";
 
 const App = () => {
   return (
-    <div className="app h-screen bg-zinc-800 text-white">
+    <div className="app bg-zinc-800 text-white">
       <Navbar>
         <div>Menu</div>
         <div>Home</div>
