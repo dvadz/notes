@@ -5,10 +5,8 @@ import { useFetchNotesQuery } from "../../store/";
 const Notes = () => {
   const user = { userId: 1 };
   const notes = useFetchNotesQuery(user);
-  console.log(notes);
   const { data, error, isFetching, isError } = notes;
 
-  console.log(data);
   let content;
 
   if (isFetching) {
@@ -17,13 +15,14 @@ const Notes = () => {
     console.log(error);
     content = <div>Error</div>;
   } else {
-    content = <div>{JSON.stringify(data)}</div>;
+    content = <NotesList notes={data} />;
   }
 
+  // TODO: add a load spinner or skeleton
+
   return (
-    <div className="h-auto w-full  flex flex-col items-center">
+    <div className="w-full flex flex-col items-center">
       <NotesSearch />
-      {/* <NotesList /> */}
       {content}
     </div>
   );
