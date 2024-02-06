@@ -7,7 +7,7 @@ const notesApi = createApi({
     fetchNotes: builder.query({
       query: (user) => {
         return {
-          url: `/notes/${user.id}`,
+          url: `/notes/${user.userId}`,
           method: "GET",
         };
       },
