@@ -5,7 +5,7 @@ const Navbar = ({ children }) => {
     return <NavbarItem key={count}>{child}</NavbarItem>;
   });
   return (
-    <div className="w-full border flex flex-row justify-between items-center">
+    <div className="border border-zinc-600 flex flex-row justify-between items-center">
       {renderedChildren}
     </div>
   );

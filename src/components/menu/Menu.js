@@ -6,7 +6,7 @@ const Menu = ({ children }) => {
   });
 
   return (
-    <div className="h-screen w-20 border flex flex-col items-center">
+    <div className="h-screen w-20 flex flex-col items-center">
       {renderedChildren}
     </div>
   );
