@@ -8,6 +8,7 @@ const Notes = () => {
   console.log(notes);
   const { data, error, isFetching, isError } = notes;
 
+  console.log(data);
   let content;
 
   if (isFetching) {
