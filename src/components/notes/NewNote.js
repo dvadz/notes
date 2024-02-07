@@ -1,4 +1,4 @@
-const NotesSearch = () => {
+const NewNote = () => {
   return (
     <div>
       <form className="m-5 p-2 border rounded-md border-zinc-600">
@@ -15,4 +15,4 @@ const NotesSearch = () => {
   );
 };
 
-export default NotesSearch;
+export default NewNote;

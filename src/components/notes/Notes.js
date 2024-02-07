@@ -1,5 +1,5 @@
 import NotesList from "./NotesList";
-import NotesSearch from "./NotesSearch";
+import NewNote from "./NewNote";
 import { useFetchNotesQuery } from "../../store/";
 
 const Notes = () => {
@@ -22,7 +22,7 @@ const Notes = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <NotesSearch />
+      <NewNote />
       {content}
     </div>
   );
