@@ -37,6 +37,11 @@ const NewNote = () => {
             id=""
             rows="4"
           ></textarea>
+          <div className="flex justify-end">
+            <button type="submit" className="hover:text-zinc-100">
+              Save
+            </button>
+          </div>
         </form>
       </div>
     );
