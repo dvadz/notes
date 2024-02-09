@@ -1,11 +1,21 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const NewNote = () => {
   const [isFormOpen, SetIsFormOpen] = useState(false);
+  const [title, SetTitle] = useState("");
+  const [body, SetBody] = useState("");
   const noteForm = useRef();
 
   const handleClick = (event) => {
     SetIsFormOpen(true);
+  };
+
+  const handleTitleChange = (event) => {
+    SetTitle(event.target.value);
+  };
+
+  const handleBodyChange = (event) => {
+    SetBody(event.target.value);
   };
 
   let content;
@@ -29,6 +39,8 @@ const NewNote = () => {
             type="text"
             name="title"
             id="title"
+            value={title}
+            onChange={handleTitleChange}
           />
           <textarea
             className="w-full bg-inherit mt-2 resize-none"
@@ -36,6 +48,8 @@ const NewNote = () => {
             name=""
             id=""
             rows="4"
+            value={body}
+            onChange={handleBodyChange}
           ></textarea>
           <div className="flex justify-end">
             <button type="submit" className="hover:text-zinc-100">
