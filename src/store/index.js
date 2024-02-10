@@ -17,3 +17,4 @@ export const store = configureStore({
 });
 
 export * from "./apis/notesApi";
+export * from "./apis/usersApi";
