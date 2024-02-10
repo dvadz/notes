@@ -1,6 +1,7 @@
 import Navbar from "./navbar/Navbar";
 import Menu from "./menu/Menu";
 import Notes from "./notes/Notes.js";
+import User from "./user/User.js";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
         <div>Refresh</div>
         <div>View</div>
         <div>Settings</div>
-        <div>User</div>
+        <User></User>
       </Navbar>
       <div className="flex">
         <Menu>
