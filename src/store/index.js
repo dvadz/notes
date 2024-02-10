@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { notesApi } from "./apis/notesApi";
 import { usersApi } from "./apis/usersApi";
+import { loginReducers } from "./slices/loginSlice";
 
 export const store = configureStore({
   reducer: {
+    app: loginReducers,
     [notesApi.reducerPath]: notesApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,
   },
