@@ -5,7 +5,7 @@ import { loginReducers } from "./slices/loginSlice";
 
 export const store = configureStore({
   reducer: {
-    app: loginReducers,
+    login: loginReducers,
     [notesApi.reducerPath]: notesApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,
   },

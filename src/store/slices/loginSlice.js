@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const loginSlice = createSlice({
-  name: "app",
+  name: "login",
   initialState: { currentUser: null },
   reducers: {
     login: (state, action) => {
