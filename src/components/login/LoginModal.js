@@ -10,7 +10,10 @@ const LoginModal = () => {
   };
 
   return ReactDOM.createPortal(
-    <div className="absolute inset-0 text-white bg-zinc-700 opacity-90 flex justify-center items-center">
+    <div
+      className="absolute inset-0 text-white bg-zinc-700 opacity-90 flex justify-center items-center"
+      onClick={handleClick}
+    >
       <div className="border bg-black opacity-100">
         <div>List of users</div>
         <button onClick={handleClick}>Login</button>
