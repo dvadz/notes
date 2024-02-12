@@ -33,11 +33,12 @@ const LoginModal = () => {
   }
 
   return ReactDOM.createPortal(
-    <div
-      className="absolute inset-0 text-white bg-zinc-700 opacity-90 flex justify-center items-center"
-      onClick={handleClick}
-    >
-      {content}
+    <div>
+      <div
+        className="absolute inset-0 text-white bg-zinc-700 opacity-90"
+        onClick={handleClick}
+      ></div>
+      <div className="absolute inset-40 text-white">{content}</div>
     </div>,
     document.getElementById("modal-container")
   );
