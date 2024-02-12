@@ -2,11 +2,11 @@ import ReactDOM from "react-dom";
 import { loginSlice } from "../../store/slices/loginSlice";
 import { useDispatch } from "react-redux";
 import { useFetchUsersQuery } from "../../store/apis/usersApi";
+import UserItem from "./UserItem";
 
 const LoginModal = () => {
   const { data, isFetching, error } = useFetchUsersQuery();
 
-  console.log(data);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -21,13 +21,15 @@ const LoginModal = () => {
     content = "Error";
   } else {
     const mappedData = data.map((user) => {
-      return <div key={user.id}>{user.name}</div>;
+      return <UserItem key={user.id} user={user} />;
     });
 
     content = (
-      <div className="border bg-black opacity-100">
+      <div className="border bg-black opacity-100 p-2">
         <div>{mappedData}</div>
-        <button onClick={handleClick}>Login</button>
+        <button onClick={handleClick} className="border rounded-md p-2 ">
+          Login
+        </button>
       </div>
     );
   }
