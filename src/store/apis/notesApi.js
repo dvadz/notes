@@ -13,8 +13,17 @@ const notesApi = createApi({
         };
       },
     }),
+    addNote: builder.mutation({
+      query: (user, { title, body }) => {
+        return {
+          url: "/notes",
+          method: "POST",
+          body: { userId: user.id, title: title, body: body },
+        };
+      },
+    }),
   }),
 });
 
 export { notesApi };
-export const { useFetchNotesQuery } = notesApi;
+export const { useFetchNotesQuery, useAddNoteMutation } = notesApi;

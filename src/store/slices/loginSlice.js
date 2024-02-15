@@ -9,7 +9,7 @@ const loginSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      state.currentUser = action.payload;
+      state.currentUser = state.selectedUser;
       state.selectedUser = null;
     },
     logout: (state, action) => {

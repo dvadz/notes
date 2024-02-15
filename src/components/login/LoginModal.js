@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { loginSlice } from "../../store/slices/loginSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFetchUsersQuery } from "../../store/apis/usersApi";
 import UserItem from "./UserItem";
 
@@ -11,6 +11,11 @@ const LoginModal = () => {
 
   const handleClick = () => {
     dispatch(loginSlice.actions.closeModal());
+  };
+
+  const handleLogin = () => {
+    dispatch(loginSlice.actions.closeModal());
+    dispatch(loginSlice.actions.login());
   };
 
   let content;
@@ -27,7 +32,7 @@ const LoginModal = () => {
     content = (
       <div className="border bg-black opacity-100 p-2">
         <div>{mappedData}</div>
-        <button onClick={handleClick} className="border rounded-md p-2 ">
+        <button onClick={handleLogin} className="border rounded-md p-2 ">
           Login
         </button>
       </div>
