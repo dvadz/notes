@@ -11,7 +11,7 @@ const App = () => {
   });
 
   return (
-    <div className="app bg-zinc-800 text-white">
+    <div className="app h-screen bg-zinc-800 text-white">
       <Navbar>
         <div>Menu</div>
         <div>Home</div>
@@ -19,9 +19,11 @@ const App = () => {
         <div>Refresh</div>
         <div>View</div>
         <div>Settings</div>
-        <User></User>
+        <div>
+          <User />
+        </div>
       </Navbar>
-      <div className="flex">
+      <div className="menu-notes flex">
         <Menu>
           <div>A</div>
           <div>B</div>
