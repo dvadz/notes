@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useAddNoteMutation } from "../../store";
 
 const NewNote = () => {
   const [isFormOpen, SetIsFormOpen] = useState(false);
   const [title, SetTitle] = useState("");
   const [body, SetBody] = useState("");
   const noteForm = useRef();
+
+  const [addNote, results] = useAddNoteMutation();
 
   const handleClick = (event) => {
     SetIsFormOpen(true);
@@ -16,6 +19,11 @@ const NewNote = () => {
 
   const handleBodyChange = (event) => {
     SetBody(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // TODO: where is user coming from?
   };
 
   let content;
@@ -31,11 +39,11 @@ const NewNote = () => {
     );
   else {
     content = (
-      <div className="newnote m-5 bg-zinc-800 text-zinc-400 w-full max-w-lg min-w-96">
+      <div className="newnote m-5 text-zinc-400 w-full max-w-lg min-w-96">
         <form className="m-2 p-2 border rounded-md border-zinc-600">
           <input
             placeholder="Title"
-            className="w-full bg-inherit"
+            className="w-full"
             type="text"
             name="title"
             id="title"
@@ -43,7 +51,7 @@ const NewNote = () => {
             onChange={handleTitleChange}
           />
           <textarea
-            className="w-full bg-inherit mt-2 resize-none"
+            className="w-full mt-2 resize-none"
             placeholder="Take a note..."
             name=""
             id=""

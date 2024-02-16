@@ -1,9 +1,13 @@
 import NotesList from "./NotesList";
 import NewNote from "./NewNote";
 import { useFetchNotesQuery } from "../../store/";
+import { useSelector } from "react-redux";
 
 const Notes = () => {
-  const user = { userId: 1 };
+  const user = useSelector((state) => {
+    return state.login.currentUser;
+  });
+
   const notes = useFetchNotesQuery(user);
   const { data, error, isFetching, isError } = notes;
 
