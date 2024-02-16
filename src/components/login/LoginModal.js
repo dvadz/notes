@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { loginSlice } from "../../store/slices/loginSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useFetchUsersQuery } from "../../store/apis/usersApi";
 import UserItem from "./UserItem";
 
