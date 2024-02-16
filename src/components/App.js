@@ -31,7 +31,13 @@ const App = () => {
           <div>D</div>
           <div>E</div>
         </Menu>
-        {currentUser && <Notes />}
+        {currentUser ? (
+          <Notes />
+        ) : (
+          <div className="w-full flex justify-center text-xl pt-4">
+            Please login
+          </div>
+        )}
         {!isLoginModalOpen || <LoginModal />}
       </div>
     </div>
