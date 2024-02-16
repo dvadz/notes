@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useAddNoteMutation } from "../../store";
+import { useSelector } from "react-redux";
 
 const NewNote = () => {
   const [isFormOpen, SetIsFormOpen] = useState(false);
   const [title, SetTitle] = useState("");
   const [body, SetBody] = useState("");
+  const user = useSelector((state) => {
+    return state.login.currentUser;
+  });
 
   const [addNote, results] = useAddNoteMutation();
 
