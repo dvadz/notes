@@ -6,8 +6,8 @@ import LoginModal from "./login/LoginModal.js";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const isLoginModalOpen = useSelector((state) => {
-    return state.login.isLoginModalOpen;
+  const { isLoginModalOpen, currentUser } = useSelector((state) => {
+    return state.login;
   });
 
   return (
@@ -31,7 +31,7 @@ const App = () => {
           <div>D</div>
           <div>E</div>
         </Menu>
-        <Notes />
+        {currentUser && <Notes />}
         {!isLoginModalOpen || <LoginModal />}
       </div>
     </div>
