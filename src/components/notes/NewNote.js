@@ -26,9 +26,8 @@ const NewNote = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // TODO: where is user coming from?
+    addNote({ title, body, userId: user.id });
   };
-
   let content;
 
   if (isFormOpen === false)
@@ -43,7 +42,10 @@ const NewNote = () => {
   else {
     content = (
       <div className="newnote m-5 text-zinc-400 w-full max-w-lg min-w-96">
-        <form className="m-2 p-2 border rounded-md border-zinc-600">
+        <form
+          className="m-2 p-2 border rounded-md border-zinc-600"
+          onSubmit={handleSubmit}
+        >
           <input
             placeholder="Title"
             className="w-full bg-inherit"
