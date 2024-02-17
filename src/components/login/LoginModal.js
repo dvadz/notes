@@ -1,7 +1,7 @@
-import ReactDOM from "react-dom";
 import { loginSlice } from "../../store/slices/loginSlice";
 import { useDispatch } from "react-redux";
 import { useFetchUsersQuery } from "../../store/apis/usersApi";
+import Modal from "../modal/Modal";
 import UserItem from "./UserItem";
 
 const LoginModal = () => {
@@ -9,47 +9,38 @@ const LoginModal = () => {
 
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(loginSlice.actions.closeModal());
-  };
-
   const handleLogin = () => {
     dispatch(loginSlice.actions.closeModal());
     dispatch(loginSlice.actions.login());
   };
 
-  let content;
+  let header, content, actionBar;
 
   if (isFetching) {
     content = "fetching";
   } else if (error) {
-    content = "Error";
+    header = "Error";
+    content = "Try again later.";
   } else {
-    const mappedData = data.map((user) => {
+    const mappedUsers = data.map((user) => {
       return <UserItem key={user.id} user={user} />;
     });
 
-    content = (
-      <div className="border bg-black opacity-100 p-2">
-        <div>{mappedData}</div>
-        <button onClick={handleLogin} className="border rounded-md p-2 ">
+    header = "Select your username";
+    content = mappedUsers;
+    actionBar = (
+      <div>
+        <button onClick={handleLogin} className="border rounded-md p-2">
           Login
         </button>
       </div>
     );
   }
 
-  return ReactDOM.createPortal(
-    <div>
-      <div
-        className="absolute inset-0 text-white bg-zinc-700 opacity-90"
-        onClick={handleClick}
-      ></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-white">
-        {content}
-      </div>
-    </div>,
-    document.getElementById("modal-container")
+  return (
+    <Modal actionBar={actionBar} header={header}>
+      {content}
+    </Modal>
   );
 };
 
