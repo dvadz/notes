@@ -3,9 +3,9 @@ import { useAddNoteMutation } from "../../store";
 import { useSelector } from "react-redux";
 
 const NewNote = () => {
-  const [isFormOpen, SetIsFormOpen] = useState(false);
-  const [title, SetTitle] = useState("");
-  const [body, SetBody] = useState("");
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
   const user = useSelector((state) => {
     return state.login.currentUser;
   });
@@ -13,21 +13,29 @@ const NewNote = () => {
   const [addNote, results] = useAddNoteMutation();
 
   const handleClick = (event) => {
-    SetIsFormOpen(true);
+    setIsFormOpen(true);
   };
 
   const handleTitleChange = (event) => {
-    SetTitle(event.target.value);
+    setTitle(event.target.value);
   };
 
   const handleBodyChange = (event) => {
-    SetBody(event.target.value);
+    setBody(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     addNote({ title, body, userId: user.id });
   };
+
+  if (results.isSuccess && isFormOpen) {
+    setIsFormOpen(false);
+    setTitle("");
+    setBody("");
+    results.reset();
+  }
+
   let content;
 
   if (isFormOpen === false)
