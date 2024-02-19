@@ -1,6 +1,5 @@
 import NotesList from "./NotesList";
 import NewNote from "./NewNote";
-import { useFetchNotesQuery } from "../../store/";
 import { useSelector } from "react-redux";
 
 const Notes = () => {
@@ -8,28 +7,20 @@ const Notes = () => {
     return state.login.currentUser;
   });
 
-  const notes = useFetchNotesQuery(user);
-  const { data, error, isFetching, isError } = notes;
-
-  let content;
-
-  if (isFetching) {
-    content = <div>Fetching</div>;
-  } else if (isError) {
-    console.log(error);
-    content = <div>Error</div>;
+  if (user) {
+    return (
+      <div className="w-full flex flex-col items-center">
+        <NewNote />
+        <NotesList user={user} />
+      </div>
+    );
   } else {
-    content = <NotesList notes={data} />;
+    return (
+      <div className="w-full flex justify-center text-xl pt-4">
+        Please login
+      </div>
+    );
   }
-
-  // TODO: add a load spinner or skeleton
-
-  return (
-    <div className="w-full flex flex-col items-center">
-      <NewNote />
-      {content}
-    </div>
-  );
 };
 
 export default Notes;
