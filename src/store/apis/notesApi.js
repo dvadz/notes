@@ -12,6 +12,13 @@ const notesApi = createApi({
           method: "GET",
         };
       },
+      providesTags: (result, error, user) => {
+        const tags = result.map((note) => {
+          return { type: "note", id: note.id };
+        });
+        tags.push({ type: "user", id: user.id });
+        return tags;
+      },
     }),
     addNote: builder.mutation({
       query: (note) => {
@@ -28,6 +35,9 @@ const notesApi = createApi({
           url: `/notes/${note.id}`,
           method: "DELETE",
         };
+      },
+      invalidatesTags: (note) => {
+        return [{ type: "note", id: note.id }];
       },
     }),
   }),
