@@ -28,6 +28,9 @@ const notesApi = createApi({
           body: { title: note.title, body: note.body, userId: note.userId },
         };
       },
+      invalidatesTags: (result, error, note) => {
+        return [{ type: "user", id: note.userId }];
+      },
     }),
     deleteNote: builder.mutation({
       query: (note) => {
