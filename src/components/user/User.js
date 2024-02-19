@@ -1,25 +1,31 @@
 import { useSelector, useDispatch } from "react-redux";
-import { loginSlice } from "../../store/slices/loginSlice";
+import { openModal } from "../../store/slices/loginSlice";
+import LoginModal from "../login/LoginModal";
 
 const User = () => {
-  const { currentUser } = useSelector((state) => {
+  const { isLoggedIn, currentUser } = useSelector((state) => {
     return state.login;
   });
 
   const dispatch = useDispatch();
 
-  const content = currentUser ? currentUser.name : "Login";
-
-  const handleClick = () => {
-    dispatch(loginSlice.actions.openModal());
+  const handleOpenModal = () => {
+    dispatch(openModal());
   };
-  return (
-    <div>
-      <div onClick={handleClick} className="cursor-pointer">
-        {content}
+
+  if (isLoggedIn === false) {
+    return (
+      <div>
+        <div onClick={handleOpenModal} className="cursor-pointer">
+          Login
+        </div>
+        <LoginModal />
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div>{currentUser.name}</div>;
+    // TODO: add logout modal here
+  }
 };
 
 export default User;
