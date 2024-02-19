@@ -22,8 +22,17 @@ const notesApi = createApi({
         };
       },
     }),
+    deleteNote: builder.mutation({
+      query: (note) => {
+        return {
+          url: `/notes/${note.id}`,
+          method: "DELETE",
+        };
+      },
+    }),
   }),
 });
 
 export { notesApi };
-export const { useFetchNotesQuery, useAddNoteMutation } = notesApi;
+export const { useFetchNotesQuery, useAddNoteMutation, useDeleteNoteMutation } =
+  notesApi;
