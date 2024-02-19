@@ -29,7 +29,7 @@ const NewNote = () => {
     addNote({ title, body, userId: user.id });
   };
 
-  if (results.isSuccess && isFormOpen) {
+  if (results.isSuccess) {
     setIsFormOpen(false);
     setTitle("");
     setBody("");
