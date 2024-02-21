@@ -1,21 +1,17 @@
 import { loginSlice } from "../../store/slices/loginSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useFetchUsersQuery } from "../../store/apis/usersApi";
 import Modal from "../modal/Modal";
 import UserItem from "./UserItem";
 
-const LoginModal = () => {
+const LoginModal = ({ closeModal }) => {
   const { data, isFetching, error } = useFetchUsersQuery();
 
   const dispatch = useDispatch();
 
-  const { isModalOpen } = useSelector((state) => {
-    return state.login;
-  });
-
   const handleLogin = () => {
-    dispatch(loginSlice.actions.closeModal());
     dispatch(loginSlice.actions.login());
+    closeModal();
   };
 
   let header, content, actionBar;
@@ -41,15 +37,11 @@ const LoginModal = () => {
     );
   }
 
-  if (isModalOpen) {
-    return (
-      <Modal actionBar={actionBar} header={header}>
-        {content}
-      </Modal>
-    );
-  } else {
-    return <div></div>;
-  }
+  return (
+    <Modal actionBar={actionBar} header={header} closeModal>
+      {content}
+    </Modal>
+  );
 };
 
 export default LoginModal;
