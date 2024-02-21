@@ -1,12 +1,8 @@
 import ReactDOM from "react-dom";
-import { useDispatch } from "react-redux";
-import { loginSlice } from "../../store/slices/loginSlice";
 
-const Modal = ({ children, actionBar, header }) => {
-  const dispatch = useDispatch();
-
+const Modal = ({ children, actionBar, header, closeModal }) => {
   const handleClose = () => {
-    dispatch(loginSlice.actions.closeModal());
+    closeModal();
   };
 
   return ReactDOM.createPortal(
