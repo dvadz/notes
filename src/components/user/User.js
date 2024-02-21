@@ -1,25 +1,29 @@
-import { useSelector, useDispatch } from "react-redux";
-import { openModal } from "../../store/slices/loginSlice";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 import LoginModal from "../login/LoginModal";
 
 const User = () => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   const { isLoggedIn, currentUser } = useSelector((state) => {
     return state.login;
   });
 
-  const dispatch = useDispatch();
+  const handleOpenLogin = () => {
+    setIsLoginModalOpen(true);
+  };
 
-  const handleOpenModal = () => {
-    dispatch(openModal());
+  const handleCloseLogin = () => {
+    setIsLoginModalOpen(false);
   };
 
   if (isLoggedIn === false) {
     return (
       <div>
-        <div onClick={handleOpenModal} className="cursor-pointer">
+        <div onClick={handleOpenLogin} className="cursor-pointer">
           Login
         </div>
-        <LoginModal />
+        {isLoginModalOpen && <LoginModal closeModal={handleCloseLogin} />}
       </div>
     );
   } else {
