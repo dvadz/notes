@@ -12,10 +12,10 @@ const Modal = ({ children, actionBar, header, closeModal }) => {
         onClick={handleClose}
       ></div>
       <div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-zinc-600 rounded-md overflow-hidden bg-black text-white p-2">
-          <div>{header}</div>
-          <div>{children}</div>
-          <div>{actionBar}</div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-zinc-600 rounded-md overflow-hidden bg-black text-white p-4">
+          <div className="mb-4">{header}</div>
+          <div className="mb-4">{children}</div>
+          <div className="flex flex-row-reverse">{actionBar}</div>
         </div>
       </div>
     </div>,
