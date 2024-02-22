@@ -1,4 +1,4 @@
-import { loginSlice } from "../../store/slices/loginSlice";
+import { login } from "../../store/slices/loginSlice";
 import { useDispatch } from "react-redux";
 import { useFetchUsersQuery } from "../../store/apis/usersApi";
 import Modal from "../modal/Modal";
@@ -10,7 +10,7 @@ const LoginModal = ({ closeModal }) => {
   const dispatch = useDispatch();
 
   const handleLogin = () => {
-    dispatch(loginSlice.actions.login());
+    dispatch(login());
     closeModal();
   };
 
