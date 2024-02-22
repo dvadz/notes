@@ -12,7 +12,14 @@ const LogoutModal = ({ closeModal }) => {
   };
 
   const header = "Logout";
-  const actionBar = <button onClick={handleLogout}>Logout</button>;
+  const actionBar = (
+    <div>
+      <button className="mr-4" onClick={closeModal}>
+        Cancel
+      </button>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
 
   return (
     <Modal header={header} actionBar={actionBar} closeModal={closeModal}>
