@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import LoginModal from "../login/LoginModal";
+import LogoutModal from "../login/LogoutModal";
 
 const User = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
 
   const { isLoggedIn, currentUser } = useSelector((state) => {
     return state.login;
@@ -17,6 +19,14 @@ const User = () => {
     setIsLoginModalOpen(false);
   };
 
+  const handleOpenLogout = () => {
+    setIsLogOutModalOpen(true);
+  };
+
+  const handleCloseLogout = () => {
+    setIsLogOutModalOpen(false);
+  };
+
   if (isLoggedIn === false) {
     return (
       <div>
@@ -27,8 +37,12 @@ const User = () => {
       </div>
     );
   } else {
-    return <div>{currentUser.name}</div>;
-    // TODO: add logout modal here
+    return (
+      <div>
+        <div onClick={handleOpenLogout}>{currentUser.name}</div>
+        {isLogOutModalOpen && <LogoutModal closeModal={handleCloseLogout} />}
+      </div>
+    );
   }
 };
 
