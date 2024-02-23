@@ -6,7 +6,6 @@ const loginSlice = createSlice({
     currentUser: null,
     selectedUser: null,
     isLoggedIn: false,
-    isModalOpen: false,
   },
   reducers: {
     login: (state, action) => {
@@ -17,12 +16,6 @@ const loginSlice = createSlice({
     logout: (state, action) => {
       state.isLoggedIn = false;
       state.currentUser = null;
-    },
-    openModal: (state, action) => {
-      state.isModalOpen = true;
-    },
-    closeModal: (state, action) => {
-      state.isModalOpen = false;
     },
     selectUser: (state, action) => {
       state.selectedUser = action.payload;
