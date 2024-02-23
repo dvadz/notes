@@ -43,9 +43,22 @@ const notesApi = createApi({
         return [{ type: "note", id: note.id }];
       },
     }),
+    editNote: builder.mutation({
+      query: (note) => {
+        return {
+          url: `/notes/${note.id}`,
+          method: "PUT",
+          body: { ...note },
+        };
+      },
+    }),
   }),
 });
 
 export { notesApi };
-export const { useFetchNotesQuery, useAddNoteMutation, useDeleteNoteMutation } =
-  notesApi;
+export const {
+  useFetchNotesQuery,
+  useAddNoteMutation,
+  useDeleteNoteMutation,
+  useEditNoteMutation,
+} = notesApi;
