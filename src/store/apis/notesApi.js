@@ -51,6 +51,9 @@ const notesApi = createApi({
           body: { ...note },
         };
       },
+      invalidatesTags: (note) => {
+        return [{ type: "note", id: note.id }];
+      },
     }),
   }),
 });
