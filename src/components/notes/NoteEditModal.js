@@ -61,13 +61,18 @@ const NoteEditModal = ({ note, closeModal }) => {
   );
 
   const actionBar = (
-    <button
-      type="submit"
-      className="hover:text-zinc-100"
-      onClick={handleSubmit}
-    >
-      Save
-    </button>
+    <div>
+      <button onClick={handleCloseModal} className="mr-4">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        className="hover:text-zinc-100"
+        onClick={handleSubmit}
+      >
+        Save
+      </button>
+    </div>
   );
 
   return (
