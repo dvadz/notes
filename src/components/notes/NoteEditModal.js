@@ -28,8 +28,12 @@ const NoteEditModal = ({ note, closeModal }) => {
     editNote({ ...note, title, body });
   };
 
-  if (results.isSuccess && isModalOpen) {
+  const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  if (results.isSuccess && isModalOpen) {
+    handleCloseModal();
   }
 
   const header = "";
