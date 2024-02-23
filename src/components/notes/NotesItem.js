@@ -1,10 +1,22 @@
 import { useDeleteNoteMutation } from "../../store/apis/notesApi";
+import { useState } from "react";
+import NoteEditModal from "./NoteEditModal";
 
 const NotesItem = ({ note }) => {
+  const [isNoteEditModalOpen, setIsNoteEditModalOpen] = useState(false);
+
   const [deleteNote, results] = useDeleteNoteMutation();
 
   const handleDeleteNote = () => {
     deleteNote(note);
+  };
+
+  const handleOpenModal = () => {
+    setIsNoteEditModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsNoteEditModalOpen(false);
   };
 
   return (
@@ -12,10 +24,15 @@ const NotesItem = ({ note }) => {
       <h4 className="text-lg m-2">{note.title}</h4>
       <div className="text-md m-2">{note.body}</div>
       <div className="flex justify-end text-sm">
-        <button className="m-2">Edit</button>
+        <button onClick={handleOpenModal} className="m-2">
+          Edit
+        </button>
         <button onClick={handleDeleteNote} className="m-2">
           Delete
         </button>
+        {isNoteEditModalOpen && (
+          <NoteEditModal note={note} closeModal={handleCloseModal} />
+        )}
       </div>
     </div>
   );
