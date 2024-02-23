@@ -15,7 +15,9 @@ const Modal = ({ children, actionBar, header, closeModal }) => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-zinc-600 rounded-md overflow-hidden bg-black text-white p-4">
           <div className="mb-4">{header}</div>
           <div className="mb-4">{children}</div>
-          <div className="flex flex-row-reverse">{actionBar}</div>
+          <div className="flex flex-row-reverse border-t border-zinc-900 pt-2">
+            {actionBar}
+          </div>
         </div>
       </div>
     </div>,
