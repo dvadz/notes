@@ -42,7 +42,7 @@ const LoginModal = ({ closeModal }) => {
   }
 
   return (
-    <Modal actionBar={actionBar} header={header} closeModal>
+    <Modal actionBar={actionBar} header={header} closeModal={closeModal}>
       {content}
     </Modal>
   );
