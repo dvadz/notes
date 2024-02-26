@@ -6,7 +6,6 @@ import LogoutModal from "../login/LogoutModal";
 const User = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
-
   const { isLoggedIn, currentUser } = useSelector((state) => {
     return state.login;
   });
@@ -27,23 +26,23 @@ const User = () => {
     setIsLogOutModalOpen(false);
   };
 
-  if (isLoggedIn === false) {
-    return (
-      <div>
-        <div onClick={handleOpenLogin} className="cursor-pointer">
-          Login
-        </div>
-        {isLoginModalOpen && <LoginModal closeModal={handleCloseLogin} />}
+  const handleClick = () => {
+    if (isLoggedIn === false) {
+      handleOpenLogin();
+    } else {
+      handleOpenLogout();
+    }
+  };
+
+  return (
+    <div>
+      <div onClick={handleClick} className="cursor-pointer">
+        {currentUser ? currentUser.name : "Login"}
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <div onClick={handleOpenLogout}>{currentUser.name}</div>
-        {isLogOutModalOpen && <LogoutModal closeModal={handleCloseLogout} />}
-      </div>
-    );
-  }
+      {isLoginModalOpen && <LoginModal closeModal={handleCloseLogin} />}
+      {isLogOutModalOpen && <LogoutModal closeModal={handleCloseLogout} />}
+    </div>
+  );
 };
 
 export default User;
