@@ -14,7 +14,11 @@ const NotesList = ({ user }) => {
     const mappedNotes = data.map((note) => {
       return <NotesItem key={note.id} note={note} />;
     });
-    return <div>{mappedNotes}</div>;
+    return (
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+        {mappedNotes}
+      </div>
+    );
   }
 };
 
