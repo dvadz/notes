@@ -1,9 +1,22 @@
+import { useEffect } from "react";
 import ReactDOM from "react-dom";
 
 const Modal = ({ children, actionBar, header, closeModal }) => {
   const handleClose = () => {
     closeModal();
   };
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") closeModal();
+    };
+
+    window.addEventListener("keyup", handleEsc);
+
+    return () => {
+      window.removeEventListener("keyup", handleEsc);
+    };
+  }, []);
 
   return ReactDOM.createPortal(
     <div>
