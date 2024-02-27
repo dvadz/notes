@@ -14,6 +14,9 @@ db.json
 # production
 /build
 
+# debug
+/.vscode/launch.json
+
 # misc
 .DS_Store
 .env.local
