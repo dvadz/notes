@@ -15,7 +15,7 @@ const NotesList = ({ user }) => {
       return <NotesItem key={note.id} note={note} />;
     });
     return (
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 px-8">
+      <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 px-8">
         {mappedNotes}
       </div>
     );
