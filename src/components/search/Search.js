@@ -24,7 +24,7 @@ const Search = () => {
         placeholder="Search"
         value={searchTerm}
         disabled={!isLoggedIn}
-        className="border rounded-md bg-zinc-800 text-white p-2"
+        className="border rounded-md bg-zinc-800 text-white p-2 focus:outline-none"
         onChange={handleChange}
       />
     </div>

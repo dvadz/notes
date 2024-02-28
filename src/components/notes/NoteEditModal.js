@@ -41,7 +41,7 @@ const NoteEditModal = ({ note, closeModal }) => {
     <div className="editnote">
       <input
         placeholder="Title"
-        className="w-full bg-inherit"
+        className="w-full bg-inherit focus:outline-none"
         type="text"
         name="title"
         id="title"
@@ -49,7 +49,7 @@ const NoteEditModal = ({ note, closeModal }) => {
         onChange={handleTitleChange}
       />
       <textarea
-        className="w-full mt-2 resize-none bg-inherit"
+        className="w-full mt-2 resize-none bg-inherit focus:outline-none"
         placeholder="Take a note..."
         name=""
         id=""
