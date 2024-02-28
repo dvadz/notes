@@ -20,7 +20,7 @@ const NotesItem = ({ note }) => {
   };
 
   return (
-    <div className="text-zinc-200 border border-zinc-600 rounded-md">
+    <div className="text-zinc-200 border border-zinc-600 rounded-md w-60">
       <h4 className="text-lg m-2">{note.title}</h4>
       <div className="text-md m-2">{note.body}</div>
       <div className="flex justify-end text-sm">
