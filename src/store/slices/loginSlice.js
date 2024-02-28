@@ -6,6 +6,7 @@ const loginSlice = createSlice({
     currentUser: null,
     selectedUser: null,
     isLoggedIn: false,
+    searchTerm: null,
   },
   reducers: {
     login: (state, action) => {
@@ -20,10 +21,19 @@ const loginSlice = createSlice({
     selectUser: (state, action) => {
       state.selectedUser = action.payload;
     },
+    changeSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
   },
 });
 
 export { loginSlice };
 export const loginReducers = loginSlice.reducer;
-export const { login, logout, openModal, closeModal, selectUser } =
-  loginSlice.actions;
+export const {
+  login,
+  logout,
+  openModal,
+  closeModal,
+  selectUser,
+  changeSearchTerm,
+} = loginSlice.actions;
