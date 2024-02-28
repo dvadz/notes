@@ -1,9 +1,17 @@
+import { useSelector } from "react-redux";
 import { useFetchNotesQuery } from "../../store/apis/notesApi";
 import NotesItem from "./NotesItem";
+import { findNotesContainingTheSearchTerm } from "./findNotesContainingTheSearchTerm";
 
 const NotesList = ({ user }) => {
-  const notes = useFetchNotesQuery(user);
-  const { data, error, isFetching, isError } = notes;
+  const searchTerm = useSelector((state) => state.login.searchTerm);
+
+  const { data, error, isFetching, isError } = useFetchNotesQuery(user);
+
+  const notes =
+    searchTerm && searchTerm.length >= 2
+      ? findNotesContainingTheSearchTerm(data, searchTerm)
+      : data;
 
   if (isFetching) {
     return <div>Fetching</div>;
@@ -11,7 +19,7 @@ const NotesList = ({ user }) => {
     console.log(error);
     return <div>Error</div>;
   } else {
-    const mappedNotes = data.map((note) => {
+    const mappedNotes = notes.map((note) => {
       return <NotesItem key={note.id} note={note} />;
     });
     return (
