@@ -3,6 +3,7 @@ import Menu from "./menu/Menu";
 import Notes from "./notes/Notes.js";
 import User from "./user/User.js";
 import Refresh from "./refresh/Refresh.js";
+import Search from "./search/Search.js";
 
 const App = () => {
   return (
@@ -10,7 +11,7 @@ const App = () => {
       <Navbar>
         <div>Menu</div>
         <div>Home</div>
-        <div>Search</div>
+        <Search />
         <Refresh />
         <div>View</div>
         <div>Settings</div>
